@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title= title
+        link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
+    body
+
+    .container
+        if (news && news.length > 0)
+            each item in news
+                .offset-md-3.col-md-6
+                    h3=item.title
+                br
+                .offset-md-2.col-md-8
+                    p=item['content:encoded']
+                div
+                    if (item.enclosure.length > 0)
+                        each img in item.enclosure
+                            img(src=img.$.url).offset-md-2.col-md-8
+                .offset-md-2.col-md-8
+                    a(href=item.link[0])
+                        i Ссылка на оригинал
+
+
+                
+        
+
+    script(src='/javascripts/jquery-3.2.1.min.js')
+    script(src='/bootstrap/js/bootstrap.js')
